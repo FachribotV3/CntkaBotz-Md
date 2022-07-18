@@ -1,39 +1,25 @@
-let fs = require('fs')
-let handler = async (m, { conn, isROwner, text }) => {
-const fgc = {
-	"key": {
-		"fromMe": false,
-		"participant": "0@s.whatsapp.net",
-		"remoteJid": "0@s.whatsapp.net"
-	},
-	"message": {
-		"groupInviteMessage": {
-			"groupJid": "6285240750713-1610340626@g.us",
-			"inviteCode": "mememteeeekkeke",
-			"groupName": "Grub Bot", 
-            "caption": "「 Fachri Bot Broadcast 」", 
-            'jpegThumbnail': fs.readFileSync('./IMG-20220707-WA0022.jpg')
-		}
-	}
+let handler = async (m, { conn, text }) => {
+	let wm = global.wm
+        let fbz = 'https://telegra.ph/file/b17f0ba47c63bcfadc3df.jpg'
+	let groups = Object.entries(await conn.groupFetchAllParticipating()).filter(([jid, chat]) => !chat?.announce).map(v => v[0]),
+		cc = text ? m : m.quoted ? await m.getQuotedObj() : false || m,
+		teks = text ? text : cc.text
+	await m.reply(`_Mengirim pesan broadcast ke ${groups.length} group_`)
+	for (let id of groups) 
+	await conn.send2ButtonImg(id, fbz, '*—「 FachriBot Broadcast 」—*\n' + teks, 'Fachri Bot By Fachri', [['Menu', '.menu'], ['Owner', '.owner']], ftroli, m)
+	m.reply('Selesai Broadcast All Group')
 }
-    const delay = time => new Promise(res => setTimeout(res, time))
-    let getGroups = await conn.groupFetchAllParticipating()
-    let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
-    let anu = groups.map(v => v.id)
-    let fbm = 'https://telegra.ph/file/c8a096af333a2506f20d5.png'
-    var pesan = m.quoted && m.quoted.text ? m.quoted.text : text
-    if(!pesan) throw 'teksnya?'
-    m.reply(`Mengirim Broadcast Ke ${anu.length} Chat, Waktu Selesai ${anu.length * 0.5 } detik`)
-    for (let i of anu) {
-    await delay(500)
-    conn.send2ButtonImg(i, fbm, `${pesan}`, wm, 'Owner', '.owner', 'Menu', '.menu', fgc).catch(_ => _)
-    }
-  m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
-}
-handler.help = ['bcgcimg <teks>']
+handler.help = ['broadcastgcimg']
+handler.command = /^(broadcastgcimg)$/i
 handler.tags = ['owner']
-handler.command = /^(bcgcimg|bcgc2)$/i
-
 handler.owner = true
 
-module.exports = handler
+export default handler
+
+function readMore() {
+	return (String.fromCharCode(8206)).repeat(4001)
+}
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
