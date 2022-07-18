@@ -98,7 +98,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
-    let fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning'
+    let fla = 'https://telegra.ph/file/ccf4e6dfe472f1c25fd93.jpgtType=1&fillTextPattern=Warning'
     let teks = 'Menu'
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
   await conn.reply(m.chat, '*Loading...*', ftroli)
@@ -106,7 +106,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     // if (m.isGroup) return conn.sendButton(m.chat, text.trim(), conn.getName(conn.user.jid), pp, [['Speedtest', _p + 'ping'], ['Owner', _p + 'owner']], m)
     //conn.sendHydrated(m.chat, text.trim(), conn.getName(conn.user.jid), await genProfile(conn, m), 'https://youtube.com/channel/UC0hs_I8N3JntK5vO6KogavQ', 'YouTube', null, null, [['Speedtest', _p + 'ping'], ['Owner', _p + 'owner']], m)
    // conn.sendMessage(m.chat, { video: { url: 'https://telegra.ph/file/c82d5c358495e8ef15916.mp4' }, gifPlayback: true, gifAttribution: ~~(Math.random() * 2), caption: text.trim(), footer: await conn.getName(conn.user.jid) , templateButtons: [{ quickReplyButton: { displayText: 'Speedtest', id: `${_p}ping` }}, { quickReplyButton: { displayText: 'Owner', id: `${_p}owner` }} ] })
-   await conn.sendButton(m.chat, `*${wish()}, ${name} 👋*`, text.trim(), flaaa + teks, [['Donasi', _p + 'donasi'], ['Owner', _p + 'owner']], false, { quoted: ftroli, contextInfo: { externalAdReply: { showAdAttribution: true,
+   await conn.sendButton(m.chat, `*${wish()}, ${name} 👋*`, text.trim(), fla, [['Donasi', _p + 'donasi'], ['Owner', _p + 'owner']], false, { quoted: ftroli, contextInfo: { externalAdReply: { showAdAttribution: true,
     title: wm2,  
     body: 'FachriBot By Fachri',
     description: '', 
