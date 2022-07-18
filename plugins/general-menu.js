@@ -114,7 +114,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     mediaUrl: `https://youtu.be/35w7z9QFLwY`
 }
 } })
-contextInfo: { showAdAttribution: true, externalAdReply: { 
+ contextInfo: { showAdAttribution: true, externalAdReply: { 
 conn.sendFile(m.chat, './media/AUD-20220711-WA0077.mp3', 'AUD-20220711-WA0077.mp3', null, fkontak, true, {
 type: 'audioMessage', 
 ptt: true 
