@@ -1,48 +1,52 @@
-let limit = 30
-let fetch = require('node-fetch')
-const { servers, yta } = require('../lib/y2mate')
-let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
-  if (!args || !args[0]) throw `contoh:\n${usedPrefix + command} https://www.youtube.com/watch?v=yxDdj_G9uRY`
-  let chat = global.db.data.chats[m.chat]
-  let server = (args[1] || servers[0]).toLowerCase()
-  let { dl_link, thumb, title, filesize, filesizeF } = await yta(args[0], servers.includes(server) ? server : servers[0])
-  let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
-  m.reply(isLimit ? `Ukuran File: ${filesizeF}\nUkuran file diatas ${limit} MB, download sendiri: ${dl_link}` : global.wait)
-  if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp3', `
-┏┉━━━━━━━━━━━❏
-┆ *YOUTUBE MP3*
-├┈┈┈┈┈┈┈┈┈┈┈
-┆• *Judul:* ${title}
-│• *Type:* MP3
-┆• *📥 Ukuran File:* ${filesizeF}
-└❏
-`.trim(), m, null, {
-    asDocument: chat.useDocument, mimetype: 'audio/mp4', ptt: true, contextInfo: {
-        externalAdReply: {
-            title: '▶︎ ━━━━━━━•────────────────── ', 
-            body: 'Now Playing...',
-            description: 'Now Playing...',
-            mediaType: 2,
-          thumbnail: await (await fetch('https://telegra.ph/file/bff41df0f2425037818d7.jpg')).buffer(),
-         mediaUrl: `https://youtube.com/watch?v=uIedYGN3NQQ`
-        }
-     }
-  })
+let limit = 50
+import fetch from 'node-fetch'
+import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
+
+let handler = async (m, { conn, args, isPrems, isOwner }) => {
+  if (args && /(?:https?:\/{2})?(?:w{3}|m|music)?\.?youtu(?:be)?\.(?:com|be)(?:watch\?v=|\/)([^\s&]+)/i.test(args[0])) {
+    let res = await fetch(`https://yt-downloader.akkun3704.repl.co/yt?url=${args[0]}`)
+    res = await res.json()
+    if (!res) res = ''
+    let { description, ownerChannelName, viewCount, uploadDate, likes, dislikes } = res.result.videoDetails
+    let { thumbnail, audio: _audio, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
+    await m.reply('_In progress, please wait..._')
+    let limitedSize = (isPrems || isOwner ? 99 : limit) * 1024
+    let audio, quality, link, lastError, isLimit //,source
+    for (let i in _audio) {
+      try {
+        audio = _audio[i]
+        quality = audio.quality
+        console.log(audio)
+        isLimit = audio.fileSize > limitedSize
+        // if (isLimit) return conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: `*Title:* ${title}\n*Link:* ${await shortUrl(`https://yt-downloader.akkun3704.repl.co/?url=${args[0]}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`)}\n\n_Filesize too big_` }, { quoted: m })
+        link = await audio.download()
+        if (link) break
+        // if (link) source = await (await fetch(link)).arrayBuffer()
+        // if (source instanceof ArrayBuffer) break
+      } catch (e) {
+        audio = link = null
+        lastError = e
+        continue
+      }
+    }
+    if (!link) throw 'Error: ' + (lastError || 'Can\'t download audio')
+    await conn.sendMessage(m.chat, { [/^(?:-|--)doc$/i.test(args[1]) || isLimit ? 'document' : 'audio']: { url: link }, fileName: `${title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m }).then(async (msg) => {
+      let caption = `*Title:* ${title}\n*Quality:* ${quality}\n*Channel:* ${ownerChannelName || ''}\n*Views:* ${viewCount}\n*Upload Date:* ${uploadDate}${likes ? `\n*Likes:* ${likes}` : ''}${dislikes ? `\n*Dislikes*: ${dislikes}` : ''}${description ? `\n*Description:*\n${description}` : ''}`.trim()
+      await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption }, { quoted: msg })
+    })
+  } else throw 'Invalid URL'
 }
-handler.help = ['mp3', 'a'].map(v => 'yt' + v + ` <url>`)
+handler.help = ['ytmp3']
 handler.tags = ['downloader']
+handler.alias = ['yta', 'ytmp3']
 handler.command = /^yt(a|mp3)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
 handler.exp = 0
-handler.limit = true
 
-module.exports = handler
+export default handler
+
+async function shortUrl(url) {
+  url = encodeURIComponent(url)
+  let res = await fetch(`https://is.gd/create.php?format=simple&url=${url}`)
+  if (!res.ok) throw false
+  return await res.text()
+}
