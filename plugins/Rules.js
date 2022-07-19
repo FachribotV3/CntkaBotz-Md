@@ -1,4 +1,5 @@
 import fs from 'fs'
+import fetch from 'node-fetch'
 let handler = async (m, { conn, args, command }) => {
 let fla = 'https://telegra.ph/file/ed41145cdfa81b0ee9c0c.jpg'
 let kontol = `Kebijakan Privasi, Syarat Ketentuan dan Peraturan *FACHRIBOT*
