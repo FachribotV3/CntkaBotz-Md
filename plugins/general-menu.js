@@ -110,7 +110,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     mediaUrl: `https://youtu.be/35w7z9QFLwY`
     title: wm2,  
     body: 'FachriBot By Fachri',
-    description: '', 
     mediaType: 2, 
     sourceUrl: 'http://github.com/Ipulpachri',
     thumbnail: await (await fetch('https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg')).buffer(), 
