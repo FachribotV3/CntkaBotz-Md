@@ -106,7 +106,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     // if (m.isGroup) return conn.sendButton(m.chat, text.trim(), conn.getName(conn.user.jid), pp, [['Speedtest', _p + 'ping'], ['Owner', _p + 'owner']], m)
     //conn.sendHydrated(m.chat, text.trim(), conn.getName(conn.user.jid), await genProfile(conn, m), 'https://youtube.com/channel/UC0hs_I8N3JntK5vO6KogavQ', 'YouTube', null, null, [['Speedtest', _p + 'ping'], ['Owner', _p + 'owner']], m)
    // conn.sendMessage(m.chat, { video: { url: 'https://telegra.ph/file/c82d5c358495e8ef15916.mp4' }, gifPlayback: true, gifAttribution: ~~(Math.random() * 2), caption: text.trim(), footer: await conn.getName(conn.user.jid) , templateButtons: [{ quickReplyButton: { displayText: 'Speedtest', id: `${_p}ping` }}, { quickReplyButton: { displayText: 'Owner', id: `${_p}owner` }} ] })
-   await conn.sendButton(m.chat, `*${wish()}, ${name} 👋*`, text.trim(), await (await fetch('https://telegra.ph/file/09ce41e6673af3383a91e.jpg')).buffer(), [['Donasi', _p + 'donasi'], ['Owner', _p + 'owner']], false, { quoted: ftroli, contextInfo: { externalAdReply: { showAdAttribution: true,
+   await conn.sendButton(m.chat, `*${wish()}, ${name} 👋*`, text.trim(), await (await fetch('https://telegra.ph/file/b9c3b2edd707cf6a490de.png')).buffer(), [['Donasi', _p + 'donasi'], ['Owner', _p + 'owner']], false, { quoted: ftroli, contextInfo: { externalAdReply: { showAdAttribution: true,
     title: wm2,  
     body: 'FachriBot By Fachri',
     description: '', 
