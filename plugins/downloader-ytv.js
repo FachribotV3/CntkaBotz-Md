@@ -37,13 +37,12 @@ let thumb = await(await fetch(wibu)).buffer()
     try { _thumb = { jpegThumbnail: await (await fetch(thumbnail)).buffer() } }
     catch (e) { }
     await conn.sendMessage(m.chat, { [/^(?:-|--)doc$/i.test(args[1]) || isLimit ? 'document' : 'video']: { url: link }, fileName: `${title}.mp4`, mimetype: 'video/mp4', ..._thumb }, { quoted: fkontak },{ contextInfo: { externalAdReply: { showAdAttribution: true,
-      mediaUrl: "https://Instagram.com/bot_whangsaf",
-      mediaType: "VIDEO",
-      description: "https://Instagram.com/bot_whangsaf", 
-      title: 'Simple Bot Esm',
-      body: wm,
-      thumbnail: thumb,
-      sourceUrl: sgc
+      title: '© FachriBot By Fachri',  
+      body: 'Apakah ini yg anda cari?',
+      description: '', 
+      mediaType: 2, 
+      thumbnail: await (await fetch('https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg')).buffer(), 
+      mediaUrl: `https://youtu.be/35w7z9QFLwY`
     }}}).then(async (msg) => {
       let caption = `*Title:* ${title}\n*Quality:* ${quality}\n*Channel:* ${ownerChannelName || ''}\n*Views:* ${viewCount}\n*Upload Date:* ${uploadDate}${likes ? `\n*Likes:* ${likes}` : ''}${dislikes ? `\n*Dislikes*: ${dislikes}` : ''}${description ? `\n*Description:*\n${description}` : ''}`.trim()
       await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption }, { quoted: msg })
