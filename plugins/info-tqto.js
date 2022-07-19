@@ -60,7 +60,7 @@ https://github.com/Ipulpachri
 *❉ Johannes:*
 *❉ Krisna:*
 *❉ Rlxfly:*
-*❉ Haori:*
+*❉ Haori&Zivfur:*
 `
 conn.sendButtonDoc(m.chat, tqto, wm,'Thanks','Bilek', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
     title: wm2,  
