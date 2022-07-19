@@ -1,4 +1,5 @@
 import fetch from 'node-fetch'
+import fs from 'fs'
 
 let handler = async (m) => {
     let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
@@ -62,13 +63,12 @@ https://github.com/Ipulpachri
 *❉ Haori:*
 `
 conn.sendButtonDoc(m.chat, tqto, wm,'Thanks','Bilek', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
-    mediaUrl: "https://Instagram.com/sfdesign.id",
-    mediaType: "VIDEO",
-    description: "https://Instagram.com/sfdesign.id", 
-    title: 'Whatsapp Bot',
-    body: wm,
-    thumbnail: thumb,
-    sourceUrl: sgc
+    title: wm2,  
+    body: 'FachriBot By Fachri',
+    description: '', 
+    mediaType: 2, 
+    thumbnail: await (await fetch('https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg')).buffer(), 
+    mediaUrl: `https://youtu.be/35w7z9QFLwY`
 }
 } })
         }
