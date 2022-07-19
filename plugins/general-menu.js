@@ -10,7 +10,7 @@ let tags = {}
 const defaultMenu = {
   before: `\n❏ › Date: %date\n❏ › Time: %time\n❏ › Runtime: %uptime\n%readmore`,
   header: '*❏═┅═━–〈 %category*',
-  body: '┊々› %cmd %islimit %isPremium',
+  body: '┊⌬ › %cmd %islimit %isPremium',
   footer: '┗━═┅═━––––––๑\n',
   after: '\n⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕\n©FachriBot-MD@^1.0.5',
 }
