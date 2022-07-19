@@ -161,7 +161,7 @@ function wish() {
   if (time >= 12) {
     wishloc = ('Selamat Siang Kak')
   }
-  if (time >= 16) {
+  if (time >= 18) {
     wishloc = ('️Selamat Sore Kak')
   }
   if (time >= 23) {
