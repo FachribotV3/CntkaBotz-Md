@@ -112,12 +112,12 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     description: '', 
     mediaType: 2, 
     thumbnail: await (await fetch('https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg')).buffer(), 
-    mediaUrl: `https://youtu.be/35w7z9QFLwY` 
+    mediaUrl: `${pickRandom([`https://www.facebook.com/Inunime-107082474576049/`,`https://youtu.be/JWHV8lPTzPs`,`https://instagram.com/sfdesign_id`])}`,  
 }
 } })
 conn.sendFile(m.chat, './media/AUD-20220711-WA0077.mp3', 'AUD-20220711-WA0077.mp3', null, fkontak, true, {
 type: 'audioMessage', 
-ptt: true 
+ptt: true, contextInfo:{ externalAdReply: {title: 'Stay Grateful With Your Life', body: `${pickRandom(['Simple Bot WhatsApp', 'Create By Fachri'])}`, sourceUrl: 'https://github.com/Ipulpachri', thumbnail: await (await fetch('https://telegra.ph/file/63c668962b7abcc95b394.jpg')).buffer(),}} 
 })
     // conn.sendButton(m.chat, 
     //`*Hi, ${name} 👋*\n\n`, 
