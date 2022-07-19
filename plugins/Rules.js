@@ -1,5 +1,6 @@
 import fs from 'fs'
 let handler = async (m, { conn, args, command }) => {
+let fla = 'https://telegra.ph/file/ed41145cdfa81b0ee9c0c.jpg'
 let kontol = `Kebijakan Privasi, Syarat Ketentuan dan Peraturan *FACHRIBOT*
 
 *Kebijakan Privasi*
@@ -55,7 +56,7 @@ Peraturan: 11/jul/22`
 
 ~ Fachri
 
-Peraturan: 11/jul/22\n`,wm + '\n\n' + botdate, giflogo, [['MENU','.menu']], fkontak, {
+Peraturan: 11/jul/22\n`,wm + '\n\n' + botdate, await (await fetch('https://telegra.ph/file/ed41145cdfa81b0ee9c0c.jpg')).buffer(), [['MENU','.menu']], fkontak, {
 contextInfo: { externalAdReply :{
                         mediaUrl: '',
                         mediaType: 2,
