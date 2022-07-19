@@ -64,7 +64,7 @@ handler.all = async function (m) {
     }
     } }
 		// Fake 🤥
-		global.ftroli = { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { itemCount: 2022, status: 1, surface: 1, message: 'Whatsapp Bot\n© FachriBot By Fachri', orderTitle: wm, thumbnail: await (await fetch('https://telegra.ph/file/bff41df0f2425037818d7.jpg').buffer(), sellerJid: '0@s.whatsapp.net' } } }
+		global.ftroli = { key: { remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { itemCount: 2022, status: 1, surface: 1, message: 'Whatsapp Bot\n© FachriBot By Fachri', orderTitle: wm, thumbnail: await (await fetch('https://telegra.ph/file/bff41df0f2425037818d7.jpg')).buffer(), sellerJid: '0@s.whatsapp.net' } } }
 		global.fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': wm, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${wm},;;;\nFN:${wm},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabell:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./IMG-20220707-WA0022.jpg'), thumbnail: fs.readFileSync('./IMG-20220707-WA0022.jpg'),sendEphemeral: true}}}
         global.fvn = {
             key: { 
