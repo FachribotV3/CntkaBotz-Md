@@ -99,7 +99,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }
     let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
     let fla = 'https://telegra.ph/file/09ce41e6673af3383a91e.jpg'
-    let thumb = `${pickRandom([`https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg`,`https://telegra.ph/file/c6fc06b48688660189dd0.jpg`,`https://telegra.ph/file/07b0f46627c7c6c88f38a.jpg`])}`,  
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
   await conn.reply(m.chat, '*Memuat Menu...*', ftroli)
     const pp = await conn.profilePictureUrl(conn.user.jid, 'image').catch(_ => './src/avatar_contact.png')
