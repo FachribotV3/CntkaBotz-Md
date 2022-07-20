@@ -99,7 +99,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }
     let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
     let fla = 'https://telegra.ph/file/09ce41e6673af3383a91e.jpg'
-    let teks = 'Menu'
+    let thumb = `${pickRandom([`https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg`,`https://telegra.ph/file/c6fc06b48688660189dd0.jpg`,`https://telegra.ph/file/07b0f46627c7c6c88f38a.jpg`])}`,  
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
   await conn.reply(m.chat, '*Memuat Menu...*', ftroli)
     const pp = await conn.profilePictureUrl(conn.user.jid, 'image').catch(_ => './src/avatar_contact.png')
@@ -111,7 +111,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     body: `${pickRandom(['udah makan belum kak?', 'udh mandi belum kak?', 'Semangat ya kak!', 'Jangan begadang mulu ya!', 'jangan spam ya kak!', 'Jangan lupa donasi yak kak! >.<', 'Jaga kesehatan yaw kak!', 'Jangan lupa makan!', 'Jangan lupa istirahat yak! >.<', 'I Love you kak >.< 💗✨', 'Pr nya udh belum kak?', 'Jangan kebanyakan main hp yk! nanti sakit :‹'])}`,
     description: '', 
     mediaType: 2, 
-    thumbnail: await (await fetch('https://telegra.ph/file/a9a6907db67ca1a0c0877.jpg')).buffer(), 
+    thumbnail: await (await fetch('thumb')).buffer(), 
     mediaUrl: `${pickRandom([`https://www.facebook.com/Inunime-107082474576049/`,`https://youtu.be/JWHV8lPTzPs`,`https://instagram.com/sfdesign_id`])}`,  
 }
 } })
