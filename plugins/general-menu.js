@@ -117,7 +117,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 } })
 conn.sendFile(m.chat, './media/AUD-20220711-WA0077.mp3', 'AUD-20220711-WA0077.mp3', null, fkontak, true, {
 type: 'audioMessage', 
-ptt: true, contextInfo:{ externalAdReply: {title: 'Stay Grateful With Your Life', body: `${pickRandom(['Simple Bot WhatsApp', 'Create By Fachri'])}`, sourceUrl: 'https://github.com/Ipulpachri', thumbnail: await (await fetch('https://telegra.ph/file/63c668962b7abcc95b394.jpg')).buffer(),}} 
+ptt: true, contextInfo:{ externalAdReply:{ showAdAttribution: true, {title: 'Stay Grateful With Your Life', body: `${pickRandom(['Simple Bot WhatsApp', 'Create By Fachri'])}`, sourceUrl: 'https://github.com/Ipulpachri', thumbnail: await (await fetch('https://telegra.ph/file/63c668962b7abcc95b394.jpg')).buffer(),}} 
 })
     // conn.sendButton(m.chat, 
     //`*Hi, ${name} 👋*\n\n`, 
