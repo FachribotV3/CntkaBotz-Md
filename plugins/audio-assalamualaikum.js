@@ -1,3 +1,5 @@
+import fs from 'fs'
+import fetch from 'node-fetch'
 import util from 'util'
 import path from 'path'
 
