@@ -1,4 +1,3 @@
-import fs from 'fs'
 import fetch from 'node-fetch'
 import { addExif } from '../lib/sticker.js'
 import { Sticker } from 'wa-sticker-formatter'
@@ -16,8 +15,8 @@ key: {
 						"mimetype": "image/jpeg",
 						"jpegThumbnail": fs.readFileSync('./IMG-20220707-WA0022.jpg'), //Gambarnye
 					},
-					"title": `Nih Kak stickernya...`, //Kasih namalu 
-					"description": `©FachriBot By Fachri`, 
+					"title": `Nih Kak~`, //Kasih namalu 
+					"description": `© Create By Fachri`, 
 					"currencyCode": "Rp",
 					"priceAmount1000": "500000",
 					"retailerId": `ppk`,
@@ -27,31 +26,29 @@ key: {
 		}
 	}
 }
-  let stiker = false
-  try {
-    let q = m.quoted ? m.quoted : m
-    let mime = (q.msg || q).mimetype || ''
-    if (/webp/.test(mime)) {
-      let img = await q.download()
-      let out = await webp2png(img)
-      if (!img) throw `balas stiker dengan perintah ${usedPrefix + command} <packname>|<author>`
-      stiker = await sticker(0, out, global.packname, global.author)
-    } else if (/image/.test(mime)) {
-      let img = await q.download()
-      let link = await uploadImage(img)
-      if (!img) throw `balas gambar dengan perintah ${usedPrefix + command} <packname>|<author>`
-      stiker = await sticker(0, link, global.packname, global.author)
-    } else if (/video/.test(mime)) {
-      if ((q.msg || q).seconds > 11) return m.reply('Maksimal 10 detik!')
-      let img = await q.download()
-      let link = await uploadFile(img)
-      if (!img) throw `balas video dengan perintah ${usedPrefix + command} <packname>|<author>`
-      stiker = await sticker(0, link, global.packname, global.author)
-    } else if (args[0]) {
-      if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packname, global.author)
-      else return m.reply('URL tidak valid!')
-    }
-  } finally {
+	let stiker = false
+	try {
+		let [packname, ...author] = args.join` `.split`|`
+		author = (author || []).join`|`
+		let q = m.quoted ? m.quoted : m
+		let mime = (q.msg || q).mimetype || q.mediaType || ''
+		if (/webp/g.test(mime)) {
+			let img = await q.download?.()
+			stiker = await addExif(img, packname || '', author || '')
+		} else if (/image/g.test(mime)) {
+			let img = await q.download?.()
+			stiker = await createSticker(img, false, packname, author)
+		} else if (/video/g.test(mime)) {
+		//	if ((q.msg || q).seconds > 10) throw 'Max 10 seconds!'
+			let img = await q.download?.()
+			stiker = await mp4ToWebp(img, { pack: packname, author: author })
+		} else if (args[0] && isUrl(args[0])) {
+			stiker = await createSticker(false, args[0], '', author, 20)
+		} else throw `Reply an image/video/sticker with command ${usedPrefix + command}`
+	} catch (e) {
+		console.log(e)
+		stiker = e
+	} finally {
     if (stiker) await conn.sendMessage(m.chat, stiker, MessageType.sticker, { quoted: ftoko})
     else throw `Gagal${m.isGroup ? ', balas gambarnya!' : ''}`
   }
@@ -139,4 +136,3 @@ async function mp4ToWebp(file, stickerMetadata) {
 	})
 	return Buffer.from((await res.text()).split(';base64,')[1], 'base64')
 }
-
