@@ -15,7 +15,7 @@ const {
                              surface : 404,
                              message: '© FachriBot By Fachri',
                              orderTitle: 'B',
-                             thumbnail: fs.readFileSync('./thumbnail.jpg'), 
+                             thumbnail: fs.readFileSync('./IMG-20220707-WA0022.jpg'), 
                              sellerJid: '0@s.whatsapp.net'
           
                            }
