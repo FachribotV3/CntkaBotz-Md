@@ -1,5 +1,4 @@
 import fs from 'fs'
-import fetch from 'node-fetch'
  let handler  = async (m, { conn, usedPrefix: _p }) => {
 const {
     MessageType,
@@ -17,7 +16,7 @@ const {
                              message: 'UwU',
                              orderTitle: 'B',
                              thumbnail: fs.readFileSync('./thumbnail.jpg') 
-                             sellerJid: '0@s.whatsapp.net'
+                             sellerJid: '0@s.whatsapp.net',
           
                            }
                          }
