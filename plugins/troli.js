@@ -5,7 +5,7 @@ const {
     MessageType,
     Mimetype
 } = (await import("@adiwajshing/baileys")).default;
- global.anu = {
+ const anu = {
 	 key : {
                            participant : '0@s.whatsapp.net'
                          },
@@ -16,9 +16,9 @@ const {
                              surface : 404,
                              message: 'UwU',
                              orderTitle: 'B',
-                             thumbnail: fs.readFileSync('./thumbnail.jpg')                            
+                             thumbnail: fs.readFileSync('./thumbnail.jpg') 
                              sellerJid: '0@s.whatsapp.net'
-
+          
                            }
                          }
                        }
