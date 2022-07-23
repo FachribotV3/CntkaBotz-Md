@@ -176,7 +176,7 @@ handler.all = async function (m) {
                             surface : 404,
                             message: 'uwu',
                             orderTitle: 'B',
-                            thumbnail: fs.readFileSync('./thumbnail.jpg'), 
+                            thumbnail: fs.readFileSync('./media/menu.jpg'), 
                             sellerJid: '0@s.whatsapp.net'
           
                           }
