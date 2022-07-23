@@ -16,9 +16,10 @@ const {
                              surface : 404,
                              message: 'UwU',
                              orderTitle: 'B',
-                             thumbnail:  await (await fetch('https://telegra.ph/file/63c668962b7abcc95b394.jpg')).buffer(),
+                             thumbnail: fs.readFileSync('./thumbnail.jpg')                            
                              sellerJid: '0@s.whatsapp.net'
-          
+                             remoteJid: 'status@broadcast'
+
                            }
                          }
                        }
