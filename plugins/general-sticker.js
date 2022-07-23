@@ -1,32 +1,8 @@
-import fs from 'fs'
 import fetch from 'node-fetch'
 import { addExif } from '../lib/sticker.js'
 import { Sticker } from 'wa-sticker-formatter'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-const ftoko = {
-key: {
-			fromMe: false,
-			participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})
-		},
-		message: {
-			"productMessage": {
-				"product": {
-					"productImage":{
-						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync('./IMG-20220707-WA0022.jpg'), //Gambarnye
-					},
-					"title": `Nih Kak~`, //Kasih namalu 
-					"description": `© Create By Fachri`, 
-					"currencyCode": "Rp",
-					"priceAmount1000": "500000",
-					"retailerId": `ppk`,
-					"productImageCount": 1
-				},
-				    "businessOwnerJid": `628162633549@s.whatsapp.net`
-		}
-	}
-}
 	let stiker = false
 	try {
 		let [packname, ...author] = args.join` `.split`|`
@@ -50,9 +26,8 @@ key: {
 		console.log(e)
 		stiker = e
 	} finally {
-    if (stiker) await conn.sendMessage(m.chat, stiker, MessageType.sticker, { quoted: ftoko})
-    else throw `Gagal${m.isGroup ? ', balas gambarnya!' : ''}`
-  }
+		m.reply(stiker)
+	}
 }
 handler.help = ['stiker']
 handler.tags = ['general']
