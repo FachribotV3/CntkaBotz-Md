@@ -18,7 +18,6 @@ const {
                              orderTitle: 'B',
                              thumbnail: fs.readFileSync('./thumbnail.jpg')                            
                              sellerJid: '0@s.whatsapp.net'
-                             remoteJid: 'status@broadcast',
 
                            }
                          }
