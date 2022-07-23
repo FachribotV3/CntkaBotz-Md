@@ -167,21 +167,21 @@ handler.all = async function (m) {
        
                     global.anu = {
 	 key : {
-                           participant : '0@s.whatsapp.net'
-                         },
-        message: {
-                     orderMessage: {
-                             itemCount : 404,
-                             itemCoun : 404,
-                             surface : 404,
-                             message: 'Uwu',
-                             orderTitle: 'B',
-                             thumbnail: await (await fetch('https://telegra.ph/file/63c668962b7abcc95b394.jpg')).buffer(), 
-                             sellerJid: '0@s.whatsapp.net'
+                          participant : '0@s.whatsapp.net'
+                        },
+       message: {
+                    orderMessage: {
+                            itemCount : 404,
+                            itemCoun : 404,
+                            surface : 404,
+                            message: 'uwu',
+                            orderTitle: 'B',
+                            thumbnail: fs.readFileSync('./thumbnail.jpg'), 
+                            sellerJid: '0@s.whatsapp.net'
           
-                           }
-                         }
-                       }
+                          }
+                        }
+                      }
 
                     global.fgif = {
             key: { 
