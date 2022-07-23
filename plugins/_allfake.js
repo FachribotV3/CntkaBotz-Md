@@ -165,6 +165,24 @@ handler.all = async function (m) {
            }
        }
        
+                    global.anu = {
+	 key : {
+                           participant : '0@s.whatsapp.net'
+                         },
+        message: {
+                     orderMessage: {
+                             itemCount : 404,
+                             itemCoun : 404,
+                             surface : 404,
+                             message: '© FachriBot By Fachri',
+                             orderTitle: 'B',
+                             thumbnail: fs.readFileSync('./thumbnail.jpg'), 
+                             sellerJid: '0@s.whatsapp.net'
+          
+                           }
+                         }
+                       }
+
                     global.fgif = {
             key: { 
                  fromMe: false,
