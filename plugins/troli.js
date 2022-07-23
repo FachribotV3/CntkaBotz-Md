@@ -13,9 +13,9 @@ const {
                              itemCount : 404,
                              itemCoun : 404,
                              surface : 404,
-                             message: '© FachriBot By Fachri',
+                             message: 'UwU',
                              orderTitle: 'B',
-                             thumbnail: fs.readFileSync('./IMG-20220707-WA0022.jpg'), 
+                             thumbnail:  await (await fetch('https://telegra.ph/file/63c668962b7abcc95b394.jpg')).buffer(),
                              sellerJid: '0@s.whatsapp.net'
           
                            }
