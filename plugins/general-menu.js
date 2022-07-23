@@ -97,23 +97,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       name, date, time,
       readmore: readMore
     }
-     const anu = {
-	key : {
-                          participant : '0@s.whatsapp.net'
-                        },
-       message: {
-                    orderMessage: {
-                            itemCount : 2022,
-                            itemCoun : 2022,
-                            surface : 2022,
-                            message: '© FachriBot By Fachri',
-                            orderTitle: 'B',
-                            thumbnail: fs.readFileSync('./IMG-20220707-WA0022.jpg'), 
-                            sellerJid: '0@s.whatsapp.net'
-          
-                          }
-                        }
-                      }
     let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
     let fla = 'https://telegra.ph/file/09ce41e6673af3383a91e.jpg'
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
